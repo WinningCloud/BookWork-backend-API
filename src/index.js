@@ -4,12 +4,14 @@ import authRoutes from "./routes/authRoutes.js";
 import {connectDB} from "./lib/db.js";
 import bookRoutes from "./routes/bookRoutes.js"
 import cors from "cors"
+import job from "./lib/cron.js"
 
 const app = express();
 app.use(cors());
 dotenv.config();
 
 const PORT = process.env.PORT || 5000;
+job.start();
 app.use(express.json());
 
 console.log(process.env.PORT);
